@@ -35,7 +35,7 @@ useresRouter.post("/signin", async(req,res)=>{
         return res.send("Invalid credatiol")
     }
     const token = jwt.sign({name:user.name,age:user.age},"SECRET12345")
-    return res.send({message:"Signe success",token})
+    return res.send({message:"Signe success",token,user})
 })
 useresRouter.get("/profile/:id", async(req,res)=>{
     const user = await Users.findById(req.params.id);

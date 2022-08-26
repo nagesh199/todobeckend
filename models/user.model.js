@@ -5,7 +5,6 @@ const Useresshema = new Schema({
     name:String,
     email:String,
     username:String,
-    address:String,
     hash:String  
 },
 {
