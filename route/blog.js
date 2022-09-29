@@ -20,8 +20,7 @@ blogController.post("/create",async(req,res)=>{
 })
 
 blogController.get("/",async(req,res)=>{
-    const {userId} = req.body;
-    const blog = await BlogModel.find({userId})
+    const blog = await BlogModel.find()
     res.send(blog)
 })
 
