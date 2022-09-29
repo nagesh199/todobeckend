@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const { connection } = require("./configs/db")
-const jobsRouter = require("./route/job");
+const authRouter= require('./route/auth');
+const blogRouter= require('./route/blog');
 const cors = require("cors")
 
 app.use(express.urlencoded({extended:true}));
@@ -9,7 +10,8 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use("/jobs",jobsRouter)
+app.use('/auth',authRouter);
+app.use('/blog',blogRouter);
 app.get("/",(req,res)=>{
     console.log(req.session)
     return res.send("hello world")
