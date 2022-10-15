@@ -1,18 +1,15 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const productRouter = require("./route/product");
 const { connection } = require("./configs/db")
-const session = require("express-session");
-const useresRouter = require("./route/user");
-const cors = require("cors")
+
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors());
 
-app.use(session({secret:"COOKIESECERT",resave:false,saveUninitialized:true}))
-
-app.use("/static",express.static("./uplodes"))
-app.use("/user",useresRouter)
+app.use("/product",productRouter)
 
 app.get("/",(req,res)=>{
     console.log(req.session)
